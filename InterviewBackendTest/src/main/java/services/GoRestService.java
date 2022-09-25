@@ -2,6 +2,7 @@ package services;
 
 import io.restassured.response.Response;
 import models.CreateUserModel;
+import models.UpdateUserModel;
 
 
 public class GoRestService extends BaseService {
@@ -13,17 +14,29 @@ public class GoRestService extends BaseService {
                 .post("/public/v2/users");
     }
 
-    public static Response updateUserInfo(final CreateUserModel createUserModel, int userId){
+    public static Response getUserInfo(int userId){
         return defaultRequestSpecification()
-                .body(createUserModel)
                 .when()
-                .put("/public/v2/users" + userId);
+                .get("/public/v2/users/" + userId);
     }
 
-    public static Response updateUserStatus(final CreateUserModel createUserModel, int userId){
+    public static Response updateUserInfo(final UpdateUserModel updateUserModel, int userId){
         return defaultRequestSpecification()
-                .body(createUserModel)
+                .body(updateUserModel)
                 .when()
-                .patch("/public/v2/users" + userId);
+                .put("/public/v2/users/" + userId);
+    }
+
+    public static Response updateUserStatus(final UpdateUserModel updateUserModel, int userId){
+        return defaultRequestSpecification()
+                .body(updateUserModel)
+                .when()
+                .patch("/public/v2/users/" + userId);
+    }
+
+    public static Response deleteUser(int userId){
+        return defaultRequestSpecification()
+                .when()
+                .delete("/public/v2/users/" + userId);
     }
 }
