@@ -7,4 +7,5 @@
 - Using the already implemented create user endpoint, write a number of tests to cover the functionality of this endpoint
 - Implement whatever is required to write tests for the update user endpoint
 
-###### The information required to perform those tasks can be found here -> https://gorest.co.in/. Feel free to update the project in any way you see fit.
+###### The information required to perform those tasks can be found here -> https://gorest.co.in/. Feel free to update the project in any way you see fit.  
+
