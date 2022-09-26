@@ -39,7 +39,7 @@ public class UpdateUserTests {
     @Test
     @Order(2)
     public void updateUser_updateInfo() {
-        GoRestService.updateUserInfo(new UpdateUserModel("Sally Maffioletti", "Female", "nmaffioletti120@flickr.com", "inactive"), userIds.get(0))
+        GoRestService.updateUserInfo(new UpdateUserModel.Builder().name("Sally Maffioletti").gender("Female").email("nmaffioletti120@flickr.com").status("inactive").build(), userIds.get(0))
                 .then()
                 .log().all()
                 .statusCode(SC_OK)
@@ -52,7 +52,7 @@ public class UpdateUserTests {
     @Order(3)
     @ValueSource(ints = {6,7,8,9})
     public void updateUser_updateStatus(int number){
-        GoRestService.updateUserStatus(new UpdateUserModel("inactive"), userIds.get(number))
+        GoRestService.updateUserStatus(new UpdateUserModel.Builder().status("inactive").build(), userIds.get(number))
                 .then()
                 .log().all()
                 .statusCode(SC_UNPROCESSABLE_ENTITY)

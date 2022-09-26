@@ -10,61 +10,60 @@ public class UpdateUserModel {
 
     private String status;
 
-    public UpdateUserModel(String name, String gender, String email, String status) {
-        this.name = name;
-        this.gender = gender;
-        this.email = email;
-        this.status = status;
+    public UpdateUserModel(Builder builder) {
+        this.name = builder.name;
+        this.gender = builder.gender;
+        this.email = builder.email;
+        this.status = builder.status;
     }
 
-    public UpdateUserModel(String email, String status) {
-        this.email = email;
-        this.status = status;
-    }
-
-    public UpdateUserModel(String status) {
-        this.status = status;
-    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public static class Builder{
+        private String name, gender, email, status;
 
-    @Override
-    public String toString() {
-        return "UpdateUserModel{" +
-                "name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", email='" + email + '\'' +
-                ", status='" + status + '\'' +
-                '}';
+        public Builder(){}
+
+        public Builder name(String name){
+            this.name = name;
+            return this;
+        }
+
+        public Builder gender(String gender){
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder email(String email){
+            this.email = email;
+            return this;
+        }
+
+        public Builder status(String status){
+            this.status = status;
+            return this;
+        }
+
+        public UpdateUserModel build(){
+            return new UpdateUserModel(this);
+        }
     }
 }
